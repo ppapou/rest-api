@@ -1,11 +1,20 @@
 package com.example.eventservice.dto;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
 
 @Entity
 @Table(name = "event")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -16,10 +25,4 @@ public class Event {
     private String speaker;
     private String eventType;
     private Date dateTime;
-
-    public Long getId() {return id;}
-
-    public void setId(Long id) {this.id = id;}
-
-    //TODO: add getters/setters
 }
