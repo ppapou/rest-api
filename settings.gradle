@@ -1,1 +1,15 @@
-rootProject.name = 'event-service'
+rootProject.name = 'rest-api'
+
+include ':api'
+include ':dto'
+include ':eventapp'
+include ':impl'
+include ':repository'
+include ':rest'
+
+project(':api').projectDir = "$rootDir/api" as File
+project(':dto').projectDir = "$rootDir/dto" as File
+project(':eventapp').projectDir = "$rootDir/eventapp" as File
+project(':impl').projectDir = "$rootDir/impl" as File
+project(':rest').projectDir = "$rootDir/rest" as File
+project(':repository').projectDir = "$rootDir/repository" as File
