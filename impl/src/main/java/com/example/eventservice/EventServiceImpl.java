@@ -1,5 +1,6 @@
 package com.example.eventservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -9,9 +10,10 @@ import java.util.logging.Logger;
 public class EventServiceImpl implements EventService {
 
     Logger logger = Logger.getLogger(EventServiceImpl.class.getName());
-    private final Events events;
+    @Autowired
+    private Events events;
 
-    EventServiceImpl(Events events) {
+    public EventServiceImpl(Events events) {
         this.events = events;
     }
 
