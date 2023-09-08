@@ -1,15 +1,3 @@
-plugins {
-    id 'java'
-}
-
-group = '${group}'
-version ='${version}'
-sourceCompatibility = '${sourceCompatibility}'
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation project(':dto')
 }

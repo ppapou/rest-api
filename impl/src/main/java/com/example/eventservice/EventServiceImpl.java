@@ -1,8 +1,7 @@
 package com.example.eventservice;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -10,7 +9,7 @@ import java.util.logging.Logger;
 public class EventServiceImpl implements EventService {
 
     Logger logger = Logger.getLogger(EventServiceImpl.class.getName());
-    @Autowired
+
     private Events events;
 
     public EventServiceImpl(Events events) {
@@ -22,7 +21,7 @@ public class EventServiceImpl implements EventService {
         events.save(event);
         return event;
     }
-    //TODO: discuss, which field should be updated
+
     public void updateEvent(Event event) {
         events.update(event);
     }

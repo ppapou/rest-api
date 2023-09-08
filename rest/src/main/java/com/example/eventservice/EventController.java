@@ -1,11 +1,7 @@
 package com.example.eventservice;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
-
 /**
  * TODO: - Is it required to return the http status?
  *       - How is better to handle the exceptions?
@@ -16,7 +12,6 @@ import java.util.Optional;
 public class EventController {
 
     private final EventServiceImpl eventService;
-
 
     EventController(EventServiceImpl eventService) {
         this.eventService = eventService;
