@@ -1,48 +1,35 @@
 package com.example.eventservice;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
-import java.util.logging.Logger;
 
+
+@Slf4j
 @Service
-public class EventServiceImpl implements EventService {
+public class EventServiceImpl implements EventService<ServiceDataLayer> {
 
-    Logger logger = Logger.getLogger(EventServiceImpl.class.getName());
+    private final EventsRepo eventsRepo;
+    private final ServiceEventMapper mapper;
 
-    private Events events;
-
-    public EventServiceImpl(Events events) {
-        this.events = events;
-    }
-
-    public Event createEvent(Event event) {
-        logger.info("Creating the event with ID -> " + event.getId());
-        events.save(event);
-        return event;
-    }
-
-    public void updateEvent(Event event) {
-        events.update(event);
+    public EventServiceImpl(EventsRepo eventsRepo, ServiceEventMapper mapper) {
+        this.eventsRepo = eventsRepo;
+        this.mapper = mapper;
     }
 
     @Override
-    public Optional<Event> getEvent(Long id){
-        return events.getEvent(id);
+    public void createEvent(ServiceDataLayer event) {
+        eventsRepo.save(mapper.toRepoEvent(event));
     }
 
     @Override
-    public Iterable<Event> getAllEvents(){
-        return events.findAll();
+    public ServiceDataLayer getEvent(Long id){
+        return mapper.toServiceEvent(eventsRepo.findById(id));
     }
 
     @Override
-    public Iterable<Event> getAllEventsByTitle(Event event){
-        return events.getAllByTitle(event.getTitle());
-    }
-
-    @Override
-    public void deleteEvent(Event event) {
-        events.delete(event);
+    public void deleteEvent(ServiceDataLayer event) {
+       eventsRepo.delete(mapper.toRepoEvent(event));
     }
 }
+

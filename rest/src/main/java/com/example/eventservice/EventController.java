@@ -1,7 +1,8 @@
 package com.example.eventservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import java.util.Optional;
+
 /**
  * TODO: - Is it required to return the http status?
  *       - How is better to handle the exceptions?
@@ -18,13 +19,17 @@ public class EventController {
     }
 
     @PostMapping("/events")
-    public Event createEvent(@RequestBody Event event) {
-        return eventService.createEvent(event);
+    public void createEvent(@RequestBody ServiceDataLayer event) {
+        eventService.createEvent(event);
     }
 
     @GetMapping("/events/{id}")
-    public Optional<Event> one(@PathVariable Long id) {
+    public ServiceDataLayer getEvent(@PathVariable Long id) {
         return eventService.getEvent(id);
     }
 
+    @DeleteMapping("/events")
+    public void delete(@RequestBody ServiceDataLayer event) {
+        eventService.deleteEvent(event);
+    }
 }

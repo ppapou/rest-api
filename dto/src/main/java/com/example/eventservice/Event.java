@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 
+@Entity
 @Data
 public class Event {
     @Id
@@ -18,15 +19,6 @@ public class Event {
     private String eventType;
     @Column(name = "DATE_TIME", nullable = false, updatable = false)
     private Timestamp dateTime;
-
-    public Event() {};
-    public Event(long id, String title, String place, String speaker, String eventType) {
-        this.id = id;
-        this.title = title;
-        this.place = place;
-        this.speaker = speaker;
-        this.eventType = eventType;
-    }
 
     @PrePersist
     private void onPrePersist() {
