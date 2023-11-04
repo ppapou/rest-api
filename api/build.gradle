@@ -1,1 +1,5 @@
 description = "Event service interface"
+
+dependencies {
+    implementation project(':event-messaging')
+}

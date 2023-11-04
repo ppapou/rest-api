@@ -11,14 +11,17 @@ public class EventServiceImpl implements EventService<ServiceDataLayer> {
 
     private final EventsRepo eventsRepo;
     private final ServiceEventMapper mapper;
+    private final EventMessaging messaging;
 
-    public EventServiceImpl(EventsRepo eventsRepo, ServiceEventMapper mapper) {
+    public EventServiceImpl(EventsRepo eventsRepo, ServiceEventMapper mapper, EventMessaging messaging) {
         this.eventsRepo = eventsRepo;
         this.mapper = mapper;
+        this.messaging = messaging;
     }
 
     @Override
     public void createEvent(ServiceDataLayer event) {
+        messaging.createEvent(event);
         eventsRepo.save(mapper.toRepoEvent(event));
     }
 
@@ -29,7 +32,8 @@ public class EventServiceImpl implements EventService<ServiceDataLayer> {
 
     @Override
     public void deleteEvent(ServiceDataLayer event) {
-       eventsRepo.delete(mapper.toRepoEvent(event));
+        messaging.deleteEvent(event.getId());
+        eventsRepo.delete(mapper.toRepoEvent(event));
     }
 }
 

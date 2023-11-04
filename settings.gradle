@@ -2,12 +2,14 @@ rootProject.name = 'rest-api'
 
 include ':api'
 include ':dto'
+include ':event-messaging'
 include ':repository'
 include ':impl'
 include ':rest'
 
 project(':api').projectDir = "$rootDir/api" as File
 project(':dto').projectDir = "$rootDir/dto" as File
+project(':event-messaging').projectDir = "$rootDir/event-messaging" as File
 project(':repository').projectDir = "$rootDir/repository" as File
 project(':impl').projectDir = "$rootDir/impl" as File
 project(':rest').projectDir = "$rootDir/rest" as File
