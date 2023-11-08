@@ -2,8 +2,9 @@ plugins {
     id "com.gorylenko.gradle-git-properties" version "${gitPropertiesPluginVersion}"
 }
 dependencies {
-    implementation project(':impl')
+    implementation project(path: ':impl')
     implementation project(':api')
+    implementation project(':event-messaging')
 
     implementation 'org.springframework:spring-context'
     implementation 'org.springframework.boot:spring-boot-starter-web'

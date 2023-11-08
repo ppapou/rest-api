@@ -5,4 +5,7 @@ dependencies {
 
     implementation 'org.springframework:spring-context'
     implementation 'org.springframework.data:spring-data-jpa'
+
+    implementation 'org.springframework.kafka:spring-kafka'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
 }
